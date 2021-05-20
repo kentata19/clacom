@@ -1,7 +1,8 @@
 RailsAdmin.config do |config|
   config.authenticate_with do
     authenticate_or_request_with_http_basic('Site Message') do |username, password|
-      username == 'foo' && password == 'bar'
+      
+      username == Rails.application.credentials.admin[:user] && password == Rails.application.credentials.admin[:password]
     end
   end
   ### Popular gems integration

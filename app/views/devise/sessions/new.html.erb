@@ -1,9 +1,15 @@
-<div class="main">
-  <div class="card devise-card">
-    <div class="form-wrap">
-      <div class="form-group text-center">
-        <h2 class="amatic">ClaCom</h2>
-      </div>
+
+
+<br>
+<br>
+<br>
+<br>
+<div class="bg-white"> 
+  <br>
+  <div class="container"> 
+    <h2 class="amatic text-center">ClaCom</h2>
+
+    <div class="profile-wrap">
       <%= form_with scope: resource, as: resource_name, url: session_path(resource_name), local: true do |f| %>
         <%= devise_error_messages! %>
         <div class="form-group">
@@ -26,6 +32,8 @@
         <%= link_to "登録する", new_user_registration_path %>
       </p>
 
+      
     </div>
   </div>
 </div>
+

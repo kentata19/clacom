@@ -21,7 +21,9 @@
             
             
                             
-              <%= link_to "サインイン", new_user_session_path %>
+            <%= link_to new_user_session_path do%>
+              <i class="fas fa-user"></i>
+            <% end %>
           
           <% end %>
           <%= link_to new_post_path(current_user),"data-turbolinks": false do %>

@@ -322,3 +322,10 @@ table td{
   color: #313131;
   font-size: small;
 }
+
+
+
+//横揺れ防止
+html {
+  overflow-x: hidden;
+}
