@@ -326,6 +326,13 @@ table td{
 
 
 //横揺れ防止
+
+
 html {
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }

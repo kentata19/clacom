@@ -64,7 +64,7 @@ class PostsController < ApplicationController
         end
       end
     end
-    if UserPost.where(post_id: 8, user_id: 1).present?
+    if UserPost.where(post_id: @post.id, user_id: current_user.id).present?
     else 
       UserPost.create(
         post_id: @post.id,
