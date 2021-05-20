@@ -1,0 +1,53 @@
+<div class="body1">
+  <div class="container">
+    <div class="text-center">
+      <br>
+        <h4><strong><%= @composer.name %></strong></h4>
+      </br>
+    </div>
+    <div class="circle-avatar text-center">
+        <% if @composer.profile_photo %>
+          <% if @composer.profile_photo.attached? %>
+            <%= image_tag @composer.profile_photo.variant(resize_to_fill: [1080, 1080]), id:"avatar_img_prev",class:"hidden" %>
+          <% end %>
+        <% else %>
+          <%= image_tag 'no-image.png', id:"avatar_img_prev",class:"hidden" %>
+        <% end %>
+          
+    </div>
+    <div class="text-center"><%= link_to "編集する", edit_composer_path,"data-turbolinks": false %>/<%= link_to "作品を追加する", new_post_path, "data-turbolinks": false%></div>
+    <br>
+      <h3>概要</h3>
+      <%= @composer.information%>
+    </br>
+    <br>
+      <h3>作品</h3>
+      
+      <div class="row">
+        <div class="text-center">
+          <div class="card-group">
+            <% @posts.each do |id| %>
+              <% post = Post.find(id)%>
+              
+            
+              <div class="col-lg-3 col-4">
+                <%= link_to post_path(post) do %>
+                  
+                  
+                  <% if post.thumbnail.attached? %>
+                    <%= image_tag post.thumbnail.variant(resize_to_fill: [1080, 1080]), class: "card-img-top" %>
+                  <% end %>
+                <% end %>
+                <small><%= post.title %></small>
+              </div>
+              
+                  
+              
+            <% end %>
+          </div> 
+          
+        </div>
+      </div>
+    </br>
+  </div>
+</div>

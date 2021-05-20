@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="text-center">
+    <br>
+      <h4><strong><%= @post.title%></strong></h4>
+    </br>
+  </div>
+  <div class="text-center">
+    <%= link_to "編集する", edit_post_path, "data-turbolinks": false %>/<%= link_to "演奏体験記を書く", new_review_path(@post)%>
+  </div>
+  <div class="circle-avatar text-center">
+      <% if @composer.profile_photo %>
+        <%= link_to composer_path(@composer) do %>
+          <% if @composer.profile_photo.attached? %>
+            <%= image_tag @composer.profile_photo.variant(resize_to_fill: [1080, 1080]), id:"avatar_img_prev",class:"hidden"  %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= link_to composer_path(@composer) do %>
+          <%= image_tag 'no-image.png', id:"avatar_img_prev",class:"hidden" %>
+        <% end %>
+      <% end %>
+        
+  </div>
+  <br>
+    <h5 class="midasi">概要</h5>
+    <%= @post.caption%>
+    <h5 class="midasi">経緯</h5>
+    <%= @post.circumstance %>
+    <h5 class="midasi">構成</h5>
+    <%= @post.configuration %>
+    <h5 class="midasi">編成</h5>
+    <%= @post.organization %>
+    <h5 class="midasi">コラム</h5>
+    <%= @post.column %>
+    <h5 class="midasi">引用</h5>
+    <%= @post.quotation %>
+  </br>
+  
+</div>
+
+<section id="sec">
+  <h4>実際に演奏した人の声</h4>
+  <h4 class="text-center newreview">
+    <%= link_to "(演奏体験記を書く)", new_review_path(@post)%>
+  </h4>
+  <ul>
+    <% if @reviews.first %>
+      <% @reviews.each do |review| %>
+        
+          <li class="review">
+            
+            <%= link_to user_path(review.user), class: "black-color" do%>
+              
+              <img src="/assets/avatar.png" class="post-profile-icon" />
+              
+              <%= review.user.name%>
+              
+            <% end %>
+          
+            <h5 class="margin-top"><%= review.instrument %>/<%= review.orchestra %></h5>
+            
+            <h5><%= link_to "詳細を見る", review_path(review) %></h5>
+            <div class="review-card">
+              
+                
+                <%= truncate(strip_tags(review.caption.to_s),length: 100)%>
+            </div>
+            
+          </li>
+        
+      <% end %>
+    <% else %>
+      
+      <li class="review">
+
+        <h4>レビュー書き方例1</h4>
+        <h5>Vn/○○交響楽団</h5>
+        <div class="review-card">
+          
+            <div class="h15">
+              <br>
+                ・演奏時に気をつけたポイント
+                <br>・どういうイメージを持って演奏会に望んだか</br>
+              </br>
+            </div>
+        </div>
+        
+      </li>
+      <li class="review">
+
+        <h4>レビュー書き方例2</h4>
+        <h5>Pc/○○交響楽団</h5>
+        <div class="review-card">
+          
+            <div class="h15">
+            　<br>
+                ・次に同じ曲を演奏する人に向けたアドバイス
+                <br>・自分が行った練習法</br>
+              </br>
+            </div>
+        </div>
+        
+      </li>
+
+      <br>
+      <br>
+      <br>
+    <% end %>
+    
+
+  </ul>
+</section>
+
+
+

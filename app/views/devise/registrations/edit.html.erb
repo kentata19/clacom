@@ -1,0 +1,26 @@
+<div class="bg-white"> 
+  <br>
+    <h3 class="amatic text-center">ClaCom</h3>
+    <div class="container">
+      <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), class:"contact-form row", local: true, method: :patch do |form| %>
+        <div class="form-group">
+          <%= form.label :ニックネーム %>　<br />
+          <%= form.text_field :name, class: "form-control"  %>
+        </div>
+        <div class="form-group">
+          <%= form.label :メールアドレス %>　<br />
+          <%= form.text_field :email, class: "form-control"  %>
+        </div>
+        
+        <br>
+        
+        <div class="form-label-group col-md-6 mx-auto text-center">
+          <%= form.submit "登録", class: "btn btn-lg btn-primary btn-block text-center" %>
+        </div>
+      <% end %>
+    </div>
+  </br>
+</div>
+
+<%= javascript_pack_tag 'post' %>
+

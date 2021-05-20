@@ -1,0 +1,80 @@
+<div class="bg-white"> 
+  <br>
+  <div class="container"> 
+    <h2 class="amatic text-center">ClaCom</h2>
+
+    <div class="profile-wrap">
+      <%= form_with model: @post, local:true do |form| %>
+          <div class="form-group">
+            <%= form.label :曲名 %>　<br />
+            <%= form.text_field :title, class: "form-control"  %>
+          </div>
+          <br>
+            <div class="form-group">
+              <%= form.label :作曲家 %>(<%= link_to '作曲家を追加したい場合はこちら', new_composer_path %>)<br />
+              <div class="card-group">
+                <% @composers.each do |obj| %>
+                  <div class="col-12 col-lg-3">
+                    <%= check_box "category", obj.id, class:"checkbox" %><h7><small><%= obj.name %></small></h7>
+                    
+                    <script type="text/javascript">
+                      $(".checkbox").on("click", function(){
+                              $('.checkbox').prop('checked', false);  //  全部のチェックを外す
+                              $(this).prop('checked', true);  //  押したやつだけチェックつける
+                      });
+                    </script>
+                  </div>
+                <% end %>
+    　　　　　　</div>　
+            </div>
+          </br>
+          <div class="circle-avatar">
+              
+              <%= form.label :サムネイル %>　<br/>
+              
+              <%= image_tag 'no-image.png', id:"avatar_img_prev",class:"hidden" %>
+              <br>
+                <%= form.file_field :thumbnail, id: 'post_img' %>
+              </br>
+                <!-- idを追加 -->
+          </div>
+          <br>
+          <div class="form-group">
+            <%= form.label :概要 %><br />
+            <small>(例 ブラームス交響曲第一番)ブラームスは、ベートーヴェンの9つの交響曲を意識するあまり、管弦楽曲、特に交響曲の作曲、発表に関して非常に慎重であった。最初のこの交響曲は特に厳しく推敲が重ねられ、着想から完成までに21年という歳月を要した。。。</small>
+            <%= form.rich_text_area :caption %>
+          </div>
+          <div class="form-group">
+            <%= form.label :経緯 %><br />
+            <small>(例　ブラームス交響曲第一番)着想から完成まで21年を費やしたが、決して遅筆ではないブラームスがこれほどの時間をかけたのは、ベートーヴェンの交響曲の存在が大きかったためである。。</small>
+            <%= form.rich_text_area :circumstance %>
+          </div>
+          <div class="form-group">
+            <%= form.label :構成 %><br />
+            <small>(例　ブラームス交響曲第一番)交響曲の定石通り4つの楽章で構成されているが、舞曲（メヌエットまたはスケルツォ）に相当する楽章を欠いている。。。</small>
+            <%= form.rich_text_area :configuration %>
+          </div>
+          <div class="form-group">
+            <%= form.label :編成 %><br />
+            <small>(例　ブラームス交響曲第一番)Fl: 2, Ob: 2, Cl: 2, Fg: 2, Hr: 4, Tp: 2, Tb: 3, Timp, Vn1, Vn2, Va, Vc, Cb</small>
+            <%= form.rich_text_area :organization %>
+          </div>
+          <div class="form-group">
+            <%= form.label :コラム %><br />
+            <small>(例　ブラームス交響曲第一番)「ベートーヴェンの第10交響曲」という評については，ブラームスは好まなかったと言われていますが，これは最大級の賛辞といえます。。。</small>
+            <%= form.rich_text_area :column %>
+          </div>
+          <div class="form-group">
+            <%= form.label :引用 %><br />
+            <small>(例　チャイコフスキー 『1812』)ロシア正教讃美歌「主よ、汝の民を救いなさい」, フランス国歌「ラ・マルセイエーズ」</small>
+            <%= form.rich_text_area :quotation %>
+          </div>
+          
+          <div class="form-label-group col-md-6 mx-auto text-center">
+            <%= form.submit "登録", class: "btn btn-lg btn-primary btn-block text-center" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <%= javascript_pack_tag 'post' %>
+</div>

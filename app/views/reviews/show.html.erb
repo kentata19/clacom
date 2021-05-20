@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row"> 
+    <div class="col-md-6 col-6 text-center"> 
+        
+        <img src="/assets/avatar.png" class="round-img-user-show" />
+        
+        
+      
+    </div>
+    
+
+
+    <div class="col-md-6 col-6">
+      <div class="row">
+      　<div class="<%= @user.id %>" id="target"></div>
+        <h3 class="show-name">
+          <%= @user.name %>
+
+        </h3>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+  <%= link_to "編集する", edit_review_path %>
+  <table>
+    <tr>
+      <th>パート</th>
+      <td><%= @review.instrument %></td>
+    </tr>
+    <tr>
+      <th>所属</th>
+      <td><%= @review.orchestra%></td>
+    </tr>
+    <tr>
+      <th>演奏会名</th>
+      <td><%= @review.performance %></td>
+    </tr>
+    <tr>
+      <th>感想</th>
+      <td>⬇️</td>
+    </tr>
+  </table>
+  <br>
+  <div class="text-center">
+    <%= @review.caption%>
+  </div>
+</div>
+<br>
+<br>
+<br>

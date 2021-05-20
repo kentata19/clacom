@@ -1,0 +1,128 @@
+@media screen and (min-width:960px){
+  .circle-avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+@media screen and (min-width:600px) and (max-width:960px){
+  .circle-avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+@media screen and (min-width:300px) and (max-width:600px){
+  .circle-avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .container{
+    margin-right: 0px;
+    margin-left: 0px;
+    max-width: 1000px;
+  }
+  .card-group .col-4 {
+    margin-right: 0;
+    margin-left: 0;
+    float: left;
+}
+  
+} 
+.overlay::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* text */
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+.title {
+  font-family: Roboto;
+  font-size: 45px;
+  font-weight: bold;
+  line-height: 1.2;
+  padding: 0 50px;
+  text-align: center;
+  color: #fff;
+}
+.description {
+  color: white;
+  text-align: center;
+}
+/* 全画面表示CSS */
+
+.hero {
+  height: 100vh; /* 全画面表示 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-image: url("~opera.jpg");
+}
+
+/* 表示調整用CSS */
+
+body{
+  margin: 0;
+  padding: 0;
+}
+.block1{
+  background: #000;
+  padding: 50px 0;
+  width: 100%;
+  margin: 0 auto;
+  color: #FFF;
+  text-align: center;
+}
+.block2{
+  background: #333;
+  padding: 50px 0;
+  width: 100%;
+  margin: 0 auto;
+  color: #FFF;
+  text-align: center;
+}
+.block3{
+  background: #666;
+  padding: 50px 0;
+  width: 100%;
+  margin: 0 auto;
+  color: #FFF;
+  text-align: center;
+}
+
+
+//reviewcardの文字の色
+.review-card .trix-content{
+  color: #313131;
+  font-size: small;
+}
+
+//new_review_path
+.newreview a{
+  color: #313131;
+  font-size: 15px;
+}
+.newreview a:hover{
+  color: #313131;
+  font-size: 15px;
+}

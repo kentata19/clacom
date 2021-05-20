@@ -1,0 +1,37 @@
+<div class="bg-white">
+  <div class="container">  
+    <br>
+    <br>
+    <h2 class="amatic text-center">ClaCom</h2>
+
+    <div class="profile-wrap">
+      <%= form_with model: @review, local:true do |form| %>
+        　<div class="form-group">
+            <%= form.label :楽器 %>　<br />
+            <small>(例)ヴァイオリン->Vn,ヴィオラ->Va,チェロ->Vc,コントラバス->Cb,フルート->Fl,オーボエ->Ob,ファゴット->Fg,クラリネット->Cl,ホルン->Hr,トランペット->Tp,トロンボーン->Tb,チューバ->Tuba,打楽器->Pcのようにアルファベット表記でお願いします。</small>
+            <%= form.text_field :instrument, class: "form-control"  %>
+          </div>
+          <div class="form-group">
+            <%= form.label :'所属オーケストラ(任意)' %>　<br />
+            <%= form.text_field :orchestra, class: "form-control"  %>
+          </div>
+          <div class="form-group">
+            <%= form.label :'演奏会名(任意)' %>　<br />
+            <%= form.text_field :performance, class: "form-control"  %>
+          </div>
+          
+          <div class="form-group">
+            <%= form.label :演奏する際に意識したポイント %><br />
+            <small>(例)2楽章は遅くならないように。。。</small>
+            <%= form.rich_text_area :caption %>
+          </div>
+          <%= form.hidden_field :post_id, :value => @post.id %>
+          <div class="form-label-group col-md-6 mx-auto text-center">
+            <%= form.submit "登録", class: "btn btn-lg btn-primary btn-block text-center" %>
+          </div>
+      <% end %>
+    </div>
+
+    
+  </div>
+</div>

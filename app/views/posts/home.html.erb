@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ClaCom~曲目解説*演奏体験記~</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    
+    
+    <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <div class="hero overlay">
+      <div class="text-box">
+        <h2 class="title">The Dramatic World<br>Of Music</h2>
+        <p class="description">共に魅力溢れるクラシック音楽の世界に浸かりましょう</p>
+      </div>
+    </div>
+    
+    <div class="block1">
+      <%= link_to "作曲家一覧ページへ", posts_path, class:"userList"%>
+      <br>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="text-center">
+            <div class="card-group">
+              <% @composers.each do |composer| %>
+                
+                
+              
+                <div class="col-4">
+                  
+                  <div class="example">
+                    <%= link_to composer_path(composer) do %>
+                        
+                      
+                      <% if composer.profile_photo.attached? %>
+                        <%= image_tag composer.profile_photo.variant(resize_to_fill: [1080, 1080]), class: "card-img-top" %>
+                      <% end %>
+                    <% end %>
+                    <div class="small-font"><%= composer.name %></div>
+                  </div>
+                </div>
+                
+                    
+                
+              <% end %>
+            </div> 
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block2">
+      <%= link_to "演奏体験記へ", reviews_path, class:"userList"%>
+      <br>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="text-center">
+            <div class="card-group">
+              <% @reviews.each do |review| %>
+                <% post = review.post%>
+                <% composer_id = PostComposer.find_by(post_id: post.id).composer_id%>
+                <% composer = Composer.find(composer_id)%>
+              
+                <div class="col-4">
+                  
+                  <div class="example">
+                    <%= link_to review_path(review) do %>
+                        
+                      
+                      <% if composer.profile_photo.attached? %>
+                        <%= image_tag composer.profile_photo.variant(resize_to_fill: [1080, 1080]), class: "card-img-top" %>
+                      <% end %>
+                    <% end %>
+                    <div class="small-font"><%= post.title %></div>
+                  </div>
+                </div>
+                
+                    
+                
+              <% end %>
+            </div> 
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block3">
+      <span class:"userList"%>ClaComとは？</span>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+            
+        <div class="col-md-6">
+          <div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+            <div class="container">
+              <div class="row">
+                <div class="col-3">
+                  <div class="text-center">
+                    <br>
+                    
+                    <i class="fas fa-music fa-3x"></i>
+                  </div>
+                </div>   
+                <div class="col-9">    
+                  
+                    <h7>~曲目解説~</h7>
+                    <p><small>当サイトでは、クラシック音楽の曲目解説を随時更新しています。曲への理解を深めてもっとクラシック音楽を好きになりましょう。</small></p>
+                  
+                </div>
+              </div>
+            </div>                    
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+            <div class="container">
+              <div class="row">
+                <div class="col-3">
+                  <div class="fh5co-icon">
+                    <br>
+                    
+                    <i class="fas fa-user-edit fa-3x"></i>
+                  </div>
+                </div>   
+                <div class="col-9">    
+                  <div class="fh5co-text">
+                    <h7>~誰でも編集可能~</h7>
+                    <p><small>当サイトでは、誰でも気軽に記事を掲載できます。自分の好きな作曲家がいれば思う存分その文才を発揮してください。</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+            <div class="container">
+              <div class="row">
+                <div class="col-3">
+                  <div class="fh5co-icon">
+                    <br>
+                    
+                    <i class="far fa-envelope fa-3x"></i>
+                  </div>
+                </div>   
+                <div class="col-9">    
+                  <div class="fh5co-text">
+                    <h7>~演奏体験記~</h7>
+                    <p><small>実際に自分が演奏した曲の感想を残すことができます。先人の残したアドバイスは自分が演奏する際の助けになるでしょう。</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="fh5co-feature animate-box" data-animate-effect="fadeInLeft">
+            <div class="container">
+              <div class="row">
+                <div class="col-3">
+                  <div class="fh5co-icon">
+                    <br>
+                    
+                    <i class="fas fa-book fa-3x"></i>
+                  </div>
+                </div>   
+                <div class="col-9">    
+                  <div class="fh5co-text">
+                    <h7>~音楽用語辞典~</h7>
+                    <p><small>後日、当機能追加予定です！演奏する際の助けにしてください！</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </body>
+</html>
+<br>
+<br>
+<%= render 'partial/footer' %>
