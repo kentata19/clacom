@@ -1,0 +1,36 @@
+<div class="body1"> 
+  <div class="container">
+    <br>
+      <h2 class="amatic text-center">POSTS</h2>
+      <br><div class="text-center"><%= link_to "新規投稿を行う", new_post_path, "data-turbolinks": false %></div></br>
+      <div class="row">
+        <div class="text-center">
+          <div class="card-group">
+            <% @posts.each do |post| %>
+              
+              
+            
+              <div class="col-lg-2 col-4">
+                
+                <div class="example">
+                  <%= link_to post_path(post) do %>
+                      
+                    
+                    <% if post.thumbnail.attached? %>
+                      <%= image_tag post.thumbnail.variant(resize_to_fill: [1080, 1080]), class: "card-img-top"  %>
+                    <% end %>
+                  <% end %>
+                  <div class="small-font"><%= post.title %></div>
+                </div>
+              </div>
+              
+                  
+              
+            <% end %>
+          </div> 
+          
+        </div>
+      </div>
+    </br>
+  </div>
+</div>

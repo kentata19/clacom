@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
   resources :users, only: [:edit]
   #postに関するルーティング
-  get '/posts/introduction' => 'posts#introduction', as: 'introduction_post'
+
+  get '/posts/bulk' => 'posts#bulk', as: 'bulk_post'
   resources :posts, only: [:new, :create, :show, :index, :edit, :update]
   #composerに関するルーティング
   post '/composers' => 'composers#create'
