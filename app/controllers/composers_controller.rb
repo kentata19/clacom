@@ -18,6 +18,7 @@ class ComposersController < ApplicationController
   def show
     @composer = Composer.find(params[:id])
     @posts = PostComposer.where(composer_id: @composer.id).pluck(:post_id)
+    render layout: false  
   end
   def edit
     @composer = Composer.find_by(id: params[:id])

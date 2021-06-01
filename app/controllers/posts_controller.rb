@@ -42,10 +42,12 @@ class PostsController < ApplicationController
     @composers = Composer.all
   end 
   def show
+
     @post = Post.find(params[:id])
     @composer_id = PostComposer.find_by(post_id: @post.id).composer_id
     @composer = Composer.find(@composer_id)
     @reviews = @post.reviews
+    render layout: false  
   end
   def edit
     @post = Post.find_by(id: params[:id])
