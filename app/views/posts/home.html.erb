@@ -78,22 +78,21 @@
       </div>
     </div>
     <div class="block2">
-      <%= link_to "演奏体験記へ", reviews_path, class:"userList"%>
+      <%= link_to "投稿一覧ページへ", bulk_post_path, class:"userList"%>
       <br>
       <br>
       <div class="container">
         <div class="row">
           <div class="text-center">
             <div class="card-group">
-              <% @reviews.each do |review| %>
-                <% post = review.post%>
+              <% @posts.each do |post| %>
                 <% composer_id = PostComposer.find_by(post_id: post.id).composer_id%>
                 <% composer = Composer.find(composer_id)%>
               
                 <div class="col-4">
                   
                   <div class="example">
-                    <%= link_to review_path(review) do %>
+                    <%= link_to post_path(post) do %>
                         
                       
                       <% if post.thumbnail.attached? %>

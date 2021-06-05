@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit]
   def home
     @composers = Composer.first(3)
-    @reviews = Review.last(3)
+    @posts = Post.last(3)
     render layout: false   
 
   end
